@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   deleteRowBtn.addEventListener('click', function (ev) {
-    if (table.rows.length > 0) {
+    if (table.rows.length > 2) {
       table.deleteRow(-1);
       updateButtonStates();
     }
@@ -47,7 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   deleteColumnBtn.addEventListener('click', function (ev) {
     for (const row of table.rows) {
-      row.deleteCell(-1);
+      if (row.cells.length > 2) {
+        row.deleteCell(-1);
+      }
     }
     updateButtonStates();
   });
