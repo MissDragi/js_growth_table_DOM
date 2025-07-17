@@ -46,8 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   deleteColumnBtn.addEventListener('click', function (ev) {
-    for (const row of table.rows) {
-      if (row.cells.length > 2) {
+    const canDelete = Array.from(table.rows).every(
+      (row) => row.cells.length > 2,
+    );
+
+    if (canDelete) {
+      for (const row of table.rows) {
         row.deleteCell(-1);
       }
     }
